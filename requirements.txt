@@ -10,12 +10,16 @@ imblearn
 xgboost
 catboost
 
+pymysql
 from_root
-
+dvc
 dill
 PyYAML
 
 python-multipart
 
+
+cryptography
+pymysql[crypto]
 
 -e .
