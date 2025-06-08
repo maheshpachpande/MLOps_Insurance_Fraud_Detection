@@ -26,46 +26,25 @@ Workflow:
 
 6. How to **DVC** involved in this project?:
 
-        - git init (Initializes a new Git repository to track code, config files, and DVC metadata.)
+    - dvc init (creates .dvcignore, .dvc)
 
-        - dvc init (Sets up DVC in the project by creating .dvc/ folder and .dvcignore file. Adds DVC configurations to .git.)
+    - dvc remote add -d myremote s3       
+    <!-- {Create a Remote Storage for DVC (e.g., Google Drive, S3, Azure, etc.)
+    dvc remote add -d myremote gdrive://<your-drive-id>} -->
 
-        - dvc add data/ (Tells DVC to track the raw_data.csv file. DVC replaces the actual file with a .dvc file and moves data to DVC cache.)
+    - /s3 folder added in .gitignore
 
-        - git add data.dvc .gitignore (Adds the .dvc file and .gitignore to Git. The actual data file is excluded from Git using .gitignore.)
+    - dvc add artifact//
+    - git add .gitignore data.dvc
+    - dvc commit  
+    - dvc push
+    - git add .
 
-        - git commit -m "Add raw_data.csv to DVC tracking" (Saves the tracked .dvc metadata file to Git history for versioning.)
-
-        - dvc remote add -d myremote gdrive://<your-drive-id> 
-        (Create a Remote Storage for DVC (e.g., Google Drive, S3, Azure, etc.) 
-        Configures a default DVC remote for storing actual data files. Replace gdrive:// with your preferred storage.)
-
-        - dvc push
-        (Uploads the actual large data file (not tracked by Git) to the remote DVC storage.)
-
-        - git add .
-        - git commit -m "Add initial data processing script"
+    - git commit -m "Add initial data processing script"
         (Tracks and versions your code/scripts as usual with Git.)
 
-        - git push -u origin main
+    - git push -u origin main
         (Pushes all committed code, pipeline files, and DVC metadata to GitHub.)
 
+
 7. a
-
-
-
-- dvc init (creates .dvcignore, .dvc)
-
-- dvc remote add -d myremote s3       
-<!-- {Create a Remote Storage for DVC (e.g., Google Drive, S3, Azure, etc.)
-dvc remote add -d myremote gdrive://<your-drive-id>} -->
-- dvc add artifact//
-- git add .gitignore data.dvc
-- dvc commit  
-- dvc push
-- git add .
-- git commit -m "Add initial data processing script"
-    (Tracks and versions your code/scripts as usual with Git.)
-
-- git push -u origin main
-    (Pushes all committed code, pipeline files, and DVC metadata to GitHub.)

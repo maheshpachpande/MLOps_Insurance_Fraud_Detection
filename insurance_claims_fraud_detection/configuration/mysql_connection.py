@@ -8,6 +8,9 @@ from insurance_claims_fraud_detection.logger import logging
 from insurance_claims_fraud_detection.constants import (
     DATABASE_NAME, HOST, USER, PASSWORD
 )
+import warnings
+warnings.filterwarnings("ignore")
+
 
 ca = certifi.where()
 
